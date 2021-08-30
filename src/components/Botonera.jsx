@@ -11,7 +11,7 @@ const numeros = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, '.'];
 const calculos = ['/', 'X', '+', '-'];
 
 
-function Botonera({ setInputState }){
+function Botonera({ initialInputState, setInputState }){
 
 
     // Return y render
@@ -26,11 +26,13 @@ function Botonera({ setInputState }){
                     digito={"AC"}
                     color={true}
                     setInputState={setInputState}
+                    initialInputState={initialInputState}
                 />
                 <Boton 
                     digito={"C"}
                     color={true}
                     setInputState={setInputState}
+                    initialInputState={initialInputState}
                 />
             </DivEnFila>
 
@@ -51,6 +53,7 @@ function Botonera({ setInputState }){
                         <Boton 
                             digito={num}
                             color={false}
+                            initialInputState={initialInputState}
                             setInputState={setInputState}
                         />
                     )}

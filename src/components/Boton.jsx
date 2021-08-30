@@ -2,13 +2,33 @@ import React from 'react';
 import {BotonEstilizado} from './styles/BotonEstilizado'
 
 
-function Boton({ digito, color, setInputState=() => undefined }){
+function Boton({ digito, color, initialInputState='', setInputState=() => undefined }){
 
-    const comprobacion = (digito) => digito === "AC" || digito === "C" ? setInputState('') : setInputState(digito);
+
+    const comprobacion = (digito) => {
+        
+        switch(digito){
+            case 'AC':
+                // Si el digito que llega es AC (All-Clear), el input pasará a tener una cadena vacía
+                setInputState('')
+                break
+            
+            case 'C':
+                // Si el digito es 'C' (Clear), el input pasará a tener la cadena actual -1 caracter
+                setInputState(initialInputState.substring(0, initialInputState.length-1))
+                break
+
+            default:
+                // Si el digito no es ninguno de los 2 anteriores, entonces es un número o un punto decimal, y se sumará a la cadena actual
+                setInputState(initialInputState + digito)
+                break
+        }
+
+    }
 
     // Return y render
     return(
-        <BotonEstilizado
+        <BotonEstilizado     
             onClick={() => comprobacion(digito)}
             digito={digito}
             color={color}

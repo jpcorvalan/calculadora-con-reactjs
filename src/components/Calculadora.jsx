@@ -12,7 +12,9 @@ function Calculadora(){
     return(
         <DivCentrado>
             <InputStyled type="text" value={initialState}/>
-            <Botonera setInputState={setInputState}/>
+            <Botonera 
+                initialInputState={initialState}
+                setInputState={setInputState}/>
         </DivCentrado>
     )
 }
