@@ -3,18 +3,16 @@ import {Boton} from './Boton';
 import {GrillaTresColumnas, UnaColumna, DivEnFila} from './styles/Botonera';
 
 
-// Creamos un arreglo que contendrá los números de la calculadora junto con el '.'
-// Estos estarán ordenados de acuerdo al orden que normalmente se haya en las calculadoras
-const numeros = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, '.'];
-
-// En un arreglo aparte colocaremos los operadores aritméticos
-const calculos = ['/', 'X', '+', '-'];
-
-
 function Botonera({ initialInputState, setInputState }){
 
+    // Creamos un arreglo que contendrá los números de la calculadora junto con el '.'
+    // Estos estarán ordenados de acuerdo al orden que normalmente se haya en las calculadoras
+    const numeros = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, '.'];
 
-    // Return y render
+    // En un arreglo aparte colocaremos los operadores aritméticos
+    const calculos = ['/', 'X', '+', '-'];
+
+
     return(
 
         <Fragment>

@@ -2,8 +2,9 @@ import React from 'react';
 import {BotonEstilizado} from './styles/BotonEstilizado'
 
 
-function Boton({ digito, color, initialInputState='', setInputState=() => undefined }){
-
+// Si no se recibe el estado inicial del input, este se coloca como un string vacío.
+// Si no se recibe la función para cambiar el estado inicial del input, se coloca por defecto como una función vacía.
+function Boton({ digito, color, initialInputState='', setInputState=()=>undefined }){
 
     const comprobacion = (digito) => {
         
@@ -26,7 +27,8 @@ function Boton({ digito, color, initialInputState='', setInputState=() => undefi
 
     }
 
-    // Return y render
+
+
     return(
         <BotonEstilizado     
             onClick={() => comprobacion(digito)}

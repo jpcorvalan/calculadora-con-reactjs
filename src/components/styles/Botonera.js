@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 // Estilizado
 
 // Creo una grilla de 3 columnas, en la cual van a ir los números del arreglo "numeros"

@@ -3,7 +3,6 @@ import {Botonera} from './Botonera';
 import {DivCentrado, InputStyled} from './styles/Calculadora';
 
 
-
 function Calculadora(){
 
     const [initialState, setInputState] = React.useState('');
