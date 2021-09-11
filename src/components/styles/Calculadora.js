@@ -19,13 +19,14 @@ const DivCentrado = styled.div`
 
 `
 
-const InputStyled = styled.input `
+const InputStyled = styled.input`
 
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: 2rem;
     width: 100%;
     height: 50px;
     background-color: #2c3033;
     color: whitesmoke;
-    font-size: 1.5rem;
     text-align: end;
     outline: none;
 
@@ -34,4 +35,4 @@ const InputStyled = styled.input `
 `
 
 
-export {DivCentrado, InputStyled}
+export { DivCentrado, InputStyled }

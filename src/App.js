@@ -1,12 +1,12 @@
 import './App.css';
-import {Calculadora} from './components/Calculadora';
+import { Calculadora } from './components/Calculadora';
 import React from 'react';
 import styled from 'styled-components';
 
 
 function App() {
 
-    const DivCentrado = styled.div `
+    const DivCentrado = styled.div`
 
         display: flex;
         flex-direction: column;
@@ -16,11 +16,11 @@ function App() {
     `
 
     return (
-        
+
         <DivCentrado>
             <Calculadora />
         </DivCentrado>
-        
+
     );
 }
 
