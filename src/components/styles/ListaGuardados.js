@@ -1,7 +1,16 @@
 import styled from "styled-components";
 
+const TituloLista = styled.p`
 
-const StyListaGuardados = styled.div`
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: 1.8rem;
+    margin: 0;
+    color: whitesmoke;
+
+`
+
+
+const ContenedorLista = styled.div`
 
     display: flex;
     flex-direction: column;
@@ -18,4 +27,19 @@ const StyListaGuardados = styled.div`
 
 `
 
-export { StyListaGuardados }
+const Lista = styled.ul`
+
+    list-style-type: none;
+    padding: 0;
+
+`
+
+const Items = styled.li`
+
+    font-family: 'ZCOOL QingKe HuangYou', cursive;    
+    font-size: 1.4rem;
+    color: #7cb342;
+
+`
+
+export { TituloLista, ContenedorLista, Lista, Items }

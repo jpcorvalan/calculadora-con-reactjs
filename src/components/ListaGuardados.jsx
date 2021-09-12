@@ -1,24 +1,24 @@
-import React, { useEffect } from 'react';
-import { StyListaGuardados } from './styles/ListaGuardados';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import React, { useContext } from 'react';
+import { ContenedorLista, Lista, TituloLista, Items } from './styles/ListaGuardados';
+import { ListaGuardadosContext } from '../context/ListaGuardadosContext';
 
 function ListaGuardados() {
-	const [item, saveValue] = useLocalStorage('calculos_guardados', []);
+	// Obtenemos el contexto, en el cual guardamos la lista de cálculos y la función que los modifica.
+	const contextoCalculosGuardados = useContext(ListaGuardadosContext);
 
-	useEffect(() => {
-		console.log('cambiado');
-	}, [item]);
+	// Creamos una key, que se incrementará en la iteración, para que cada item de la lista tenga un identificador único.
+	let key = 0;
 
 	return (
-		<StyListaGuardados>
-			<p>Lista de calculos</p>
-
-			<ul>
-				{item.map((calc) => (
-					<li>{calc}</li>
-				))}
-			</ul>
-		</StyListaGuardados>
+		<ContenedorLista>
+			<TituloLista>Lista de calculos guardados</TituloLista>
+			<Lista>
+				{contextoCalculosGuardados.lista.map((calc) => {
+					key += 1;
+					return <Items key={key}>{calc}</Items>;
+				})}
+			</Lista>
+		</ContenedorLista>
 	);
 }
 

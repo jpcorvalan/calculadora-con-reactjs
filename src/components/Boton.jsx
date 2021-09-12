@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BotonEstilizado } from './styles/BotonEstilizado';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { ListaGuardadosContext } from '../context/ListaGuardadosContext';
 
 // Si no se recibe el estado inicial del input, este se coloca como un string vacío.
 // Si no se recibe la función para cambiar el estado inicial del input, se coloca por defecto como una función vacía.
 function Boton({ digito = 0, color, initialInputState = '', setInputState = () => undefined }) {
-	const [item, saveValue] = useLocalStorage('calculos_guardados', []);
+	const contextoNumerosGuardados = useContext(ListaGuardadosContext);
 
 	const comprobar = (digito) => {
 		switch (digito) {
@@ -17,6 +17,27 @@ function Boton({ digito = 0, color, initialInputState = '', setInputState = () =
 			case 'C':
 				// Si el digito es 'C' (Clear), el input pasará a tener la cadena actual -1 caracter
 				setInputState(initialInputState.substring(0, initialInputState.length - 1));
+				break;
+
+			case 'M+':
+				// M+ está hecho para guardar un número en la memoria.
+				// Creamos expresiones regulares para verificar que solo puedan guardarse números en la memoria.
+				// Solo el signo de "-" será aceptado, para guardar también números negativos.
+				const numRegExp = /[0-9]/g;
+				const calcRegExp = /[+*/]/g;
+
+				// Comprobamos que se cumplan ambas expresiones regulares.
+				if (numRegExp.test(initialInputState) && !calcRegExp.test(initialInputState)) {
+					contextoNumerosGuardados.actualizarLista([
+						...contextoNumerosGuardados.lista,
+						initialInputState,
+					]);
+				}
+				break;
+
+			case 'MC':
+				// Memory Clear, borrará todos los datos almacenados, reemplazándolos por una cadena vacía.
+				contextoNumerosGuardados.actualizarLista([]);
 				break;
 
 			case '=':
@@ -34,15 +55,6 @@ function Boton({ digito = 0, color, initialInputState = '', setInputState = () =
 					setInputState(resultado);
 				}
 
-				break;
-
-			case 'M+':
-				item.push(initialInputState);
-				saveValue(item);
-				break;
-
-			case 'MC':
-				saveValue([]);
 				break;
 
 			default:

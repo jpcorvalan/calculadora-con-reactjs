@@ -10,6 +10,9 @@ function Botonera({ initialInputState, setInputState }) {
 	// En un arreglo aparte colocaremos los operadores aritméticos
 	const calculos = ['/', '*', '+', '-'];
 
+	// Botones de memoria
+	const memoria = ['M+', 'MR', 'MC'];
+
 	return (
 		<Fragment>
 			{/* Los botones iniciales serán los de memoria: 
@@ -19,24 +22,15 @@ function Botonera({ initialInputState, setInputState }) {
                 -MC -> Borra el último dato guardado en la memoria (Memory Clear)                
             */}
 			<DivEnFila>
-				<Boton
-					digito={'M+'}
-					color={'#7cb342'}
-					initialInputState={initialInputState}
-					setInputState={setInputState}
-				/>
-				<Boton
-					digito={'MR'}
-					color={'#7cb342'}
-					initialInputState={initialInputState}
-					setInputState={setInputState}
-				/>
-				<Boton
-					digito={'MC'}
-					color={'#7cb342'}
-					initialInputState={initialInputState}
-					setInputState={setInputState}
-				/>
+				{memoria.map((item) => (
+					<Boton
+						digito={item}
+						color={'#7cb342'}
+						initialInputState={initialInputState}
+						setInputState={setInputState}
+						key={item}
+					/>
+				))}
 			</DivEnFila>
 
 			{/* Enviamos los botones de AC (All clear), C (Clear) y los paréntesis, estos se repartirán el ancho por igual. */}
