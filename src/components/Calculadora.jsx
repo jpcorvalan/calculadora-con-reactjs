@@ -13,7 +13,7 @@ function Calculadora() {
 		// Las RegExp se escriben entre barras "/", y utilizan muchos caracteres especiales (entre ellos, justamente, los signos matemáticos).
 		// Para utilizar de forma literal estos signos y que no afecten a la expresión, se les antepone una barra invertida "\".
 		// Con {x,} (siendo x un Natural) no podrá escribirse más de 1 caracter de cálculo dentro del input (1++2, 14**2, por ejemplo).
-		// También utilizan flags, los /g en estos casos, indican que debe analizarse toda la cadena completa (global).
+		// También utilizan flags. Los /g en estos casos, indican que debe analizarse toda la cadena completa (global).
 		// Más información sobre RegExp -> https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions
 		// -------------------------------------------------------------------------------------------------------------------------
 		let regExSuma = /\+{2,}/g;

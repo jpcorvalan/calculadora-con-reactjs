@@ -1,24 +1,17 @@
 import './App.css';
 import { Calculadora } from './components/Calculadora';
 import React from 'react';
-import styled from 'styled-components';
+import { DivCentrado } from './components/styles/App';
+import { ListaGuardados } from './components/ListaGuardados';
 
 
 function App() {
-
-    const DivCentrado = styled.div`
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-    `
 
     return (
 
         <DivCentrado>
             <Calculadora />
+            <ListaGuardados />
         </DivCentrado>
 
     );

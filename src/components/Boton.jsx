@@ -1,9 +1,12 @@
 import React from 'react';
 import { BotonEstilizado } from './styles/BotonEstilizado';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 // Si no se recibe el estado inicial del input, este se coloca como un string vacío.
 // Si no se recibe la función para cambiar el estado inicial del input, se coloca por defecto como una función vacía.
 function Boton({ digito = 0, color, initialInputState = '', setInputState = () => undefined }) {
+	const [item, saveValue] = useLocalStorage('calculos_guardados', []);
+
 	const comprobar = (digito) => {
 		switch (digito) {
 			case 'AC':
@@ -31,6 +34,15 @@ function Boton({ digito = 0, color, initialInputState = '', setInputState = () =
 					setInputState(resultado);
 				}
 
+				break;
+
+			case 'M+':
+				item.push(initialInputState);
+				saveValue(item);
+				break;
+
+			case 'MC':
+				saveValue([]);
 				break;
 
 			default:
