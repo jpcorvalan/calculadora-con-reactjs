@@ -4,16 +4,16 @@ import { ListaGuardadosContext } from '../context/ListaGuardadosContext';
 
 function ListaGuardados() {
 	// Obtenemos el contexto, en el cual guardamos la lista de cálculos y la función que los modifica.
-	const contextoCalculosGuardados = useContext(ListaGuardadosContext);
+	const { lista } = useContext(ListaGuardadosContext);
 
 	// Creamos una key, que se incrementará en la iteración, para que cada item de la lista tenga un identificador único.
 	let key = 0;
 
 	return (
 		<ContenedorLista>
-			<TituloLista>Lista de calculos guardados</TituloLista>
+			<TituloLista>Lista de numeros guardados</TituloLista>
 			<Lista>
-				{contextoCalculosGuardados.lista.map((calc) => {
+				{lista.map((calc) => {
 					key += 1;
 					return <Items key={key}>{calc}</Items>;
 				})}

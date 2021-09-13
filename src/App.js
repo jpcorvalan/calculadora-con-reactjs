@@ -10,7 +10,7 @@ import { Glosario } from './components/Glosario';
 
 function App() {
 
-    // Contiene la lista y su modificador
+    // Contiene la lista y su modificador, se le pasa un arreglo vacío en caso de que "numeros_guardados" no exista en el localStorage
     const [lista, actualizarLista] = useLocalStorage('numeros_guardados', []);
 
     // Contiene un número que servirá de índice para manipular la lista, con su modificador

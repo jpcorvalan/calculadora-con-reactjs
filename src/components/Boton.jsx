@@ -59,7 +59,7 @@ function Boton({ digito = 0, color, initialInputState = '', setInputState = () =
 						if (lista.length - 1 > indiceLista) {
 							actualizarIndiceLista(indiceLista + 1);
 						} else {
-							// En el caso de que el índice ya sea igual al tamaño de la lista
+							// En el caso de que el índice ya sea igual al tamaño de la lista - 1,
 							// se lo vuelve a poner en 0, y comienza de nuevo el recorrido desde el primer elemento.
 							actualizarIndiceLista(0);
 						}
@@ -79,7 +79,7 @@ function Boton({ digito = 0, color, initialInputState = '', setInputState = () =
 					// con el número de la lista que fue seleccionado, este último se colocará entre paréntesis.
 					setInputState(`${initialInputState}(${lista[indiceLista]})`);
 
-					// Finalmente, cambiamos a verdadera la visibilidad del input principal para ver el resultado.
+					// Finalmente, cambiamos a true la visibilidad del input principal para ver el resultado.
 					setVisibilidadInputPrincipal(true);
 				}
 
@@ -89,6 +89,8 @@ function Boton({ digito = 0, color, initialInputState = '', setInputState = () =
 			case 'MC':
 				// Memory Clear, borrará el último dato de la lista cuando esta no se esté manipulando.
 				if (lista.length > 0 && visibilidadInputPrincipal) {
+					// Debido a que pop() es destructiva, lo ejecutamos sobre una variable auxiliar
+					// y luego actualizamos la lista con dicha variable.
 					let listaAux = [...lista];
 					listaAux.pop();
 					actualizarLista(listaAux);
