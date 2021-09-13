@@ -1,9 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Botonera } from './Botonera';
 import { DivCentrado, InputStyled } from './styles/Calculadora';
+import { ListaGuardadosContext } from '../context/ListaGuardadosContext';
 
 function Calculadora() {
-	const [initialState, setInputState] = React.useState('');
+	const [initialState, setInputState] = useState('');
+	const { visibilidadInputPrincipal, lista, indiceLista } = useContext(ListaGuardadosContext);
+
+	const ocultarInput = (valor) => {
+		if (valor) {
+			return 'text';
+		} else {
+			return 'hidden';
+		}
+	};
 
 	// Para eliminar la mayor cantidad de errores al trabajar con los cálculos, utilizamos expresiones regulares
 	// Estas, al estar dentro del useEffect(), estarán pendiente cada vez que se escriba un digito en el input.
@@ -37,7 +47,21 @@ function Calculadora() {
 	// Return y render
 	return (
 		<DivCentrado>
-			<InputStyled type="text" defaultValue={initialState} disabled={true} />
+			{/* Este input será el principal, que contendrá los cálculos que vaya haciendo el usuario
+                Por supuesto, aparece como visible por defecto */}
+			<InputStyled
+				type={ocultarInput(visibilidadInputPrincipal)}
+				defaultValue={initialState}
+				disabled={true}
+			/>
+
+			{/* Este input estará oculto, y será el encargado de visualizar los números guardados de la lista
+                cuando el usuario lo indique*/}
+			<InputStyled
+				type={ocultarInput(!visibilidadInputPrincipal)}
+				defaultValue={lista[indiceLista]}
+				disabled={true}
+			/>
 			<Botonera initialInputState={initialState} setInputState={setInputState} />
 		</DivCentrado>
 	);

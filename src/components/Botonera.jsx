@@ -11,15 +11,22 @@ function Botonera({ initialInputState, setInputState }) {
 	const calculos = ['/', '*', '+', '-'];
 
 	// Botones de memoria
-	const memoria = ['M+', 'MR', 'MC'];
+	const memoria = ['M+', 'MR', 'MC', 'CN'];
 
 	return (
 		<Fragment>
 			{/* Los botones iniciales serán los de memoria: 
             
-                -M+ -> Guarda el valor en pantalla
-                -MR -> Recupera el último valor guardado en la memoria (Memory Recall)
-                -MC -> Borra el último dato guardado en la memoria (Memory Clear)                
+                -M+ ->  Guarda el valor en pantalla (Solo números, positivos y negativos).
+
+                -MR ->  Recupera el último valor guardado en la memoria (Memory Recall).
+                        Si se sigue presionando, navegará por los diferentes
+                        números guardados en la lista.
+
+                -MC ->  Borra el último dato guardado en la memoria (Memory Clear).
+
+                -CN -> "Choose Number", sirve para que el usuario elija el número guardado a utilizar
+                        cuando navegue entre la lista de guardados.
             */}
 			<DivEnFila>
 				{memoria.map((item) => (
