@@ -47,16 +47,25 @@ function Boton({ digito = 0, color, initialInputState = '', setInputState = () =
 				// con el primer elemento de la lista de guardados
 				if (visibilidadInputPrincipal && lista.length > 0) {
 					setVisibilidadInputPrincipal(false);
+					actualizarIndiceLista(0);
 				} else {
 					// Si el input secundario ya se está mostrando con el primer elemento de la lista
 					// al seguir presionando el botón, se navegará por los otros números guardados.
-					// Todo esto, sumando 1 al indice cada vez que se presione el botón.
-					if (lista.length > 0 && indiceLista < lista.length) {
-						actualizarIndiceLista(indiceLista + 1);
-					} else if (lista.length > 0 && indiceLista >= lista.length) {
-						actualizarIndiceLista(0);
+
+					// Comprobamos que la lista tenga elementos.
+					if (lista.length > 0) {
+						// Si el índice, todavía es un número válido para obtener elementos, se le suma 1
+						// y se muestra el siguiente elemento.
+						if (lista.length - 1 > indiceLista) {
+							actualizarIndiceLista(indiceLista + 1);
+						} else {
+							// En el caso de que el índice ya sea igual al tamaño de la lista
+							// se lo vuelve a poner en 0, y comienza de nuevo el recorrido desde el primer elemento.
+							actualizarIndiceLista(0);
+						}
 					}
 				}
+
 				break;
 
 			case 'CN':
@@ -78,8 +87,8 @@ function Boton({ digito = 0, color, initialInputState = '', setInputState = () =
 				break;
 
 			case 'MC':
-				// Memory Clear, borrará el último dato de la lista
-				if (lista.length > 0) {
+				// Memory Clear, borrará el último dato de la lista cuando esta no se esté manipulando.
+				if (lista.length > 0 && visibilidadInputPrincipal) {
 					let listaAux = [...lista];
 					listaAux.pop();
 					actualizarLista(listaAux);

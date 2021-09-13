@@ -5,6 +5,7 @@ import { DivCentrado } from './components/styles/App';
 import { ListaGuardados } from './components/ListaGuardados';
 import { ListaGuardadosContext } from './context/ListaGuardadosContext';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { Glosario } from './components/Glosario';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
     // se mostrará otro, que contendrá la lista de números, y viceversa.
     const [visibilidadInputPrincipal, setVisibilidadInputPrincipal] = useState(true);
 
-    // Este objeto se utiliza para el provider del contexto, y contiene todos los estados de arriba.
+    // Este objeto se utiliza para el provider del contexto, y contiene todos los estados declarados de arriba.
     const contextoListaDeNumeros = {
         lista,
         actualizarLista,
@@ -39,6 +40,7 @@ function App() {
                 <Calculadora />
                 <ListaGuardados />
             </ListaGuardadosContext.Provider>
+            <Glosario />
         </DivCentrado>
 
     );
