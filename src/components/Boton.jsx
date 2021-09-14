@@ -119,11 +119,14 @@ function Boton({ digito = 0, color, initialInputState = '', setInputState = () =
 
 				// Si actualmente en el input está escrita la frase de "Expresión Incorrecta", esta se reemplazará completamente
 				// al escribir nuevamente un digito. Este se parsea a String, ya que sino, este se convierte en un entero,
-				// y no puede ser trabajado por la tecla "C" (la función substring() arrojará un error)
-				if (initialInputState === 'Expresión Incorrecta') {
-					setInputState(String(digito));
-				} else {
-					setInputState(initialInputState + digito);
+				// y no puede ser trabajado por la tecla "C" (la función substring() arrojará un error).
+				// La escritura dentro del input principal solo será posible si es este el que se está mostrando.
+				if (visibilidadInputPrincipal) {
+					if (initialInputState === 'Expresión Incorrecta') {
+						setInputState(String(digito));
+					} else {
+						setInputState(initialInputState + digito);
+					}
 				}
 				break;
 		}
