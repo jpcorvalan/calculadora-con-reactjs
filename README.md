@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+<h1><center>React Calculator</center></h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ¿Cómo instalar?
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+1 - Descargar el proyecto
 
-### `npm start`
+2 - Abrir una terminal en la carpeta raíz del proyecto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+3 - Ejecutar el siguiente comando:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`npm install`
 
-### `npm test`
+4 - Esperar a que finalice la descarga de las librerías de Node, y mantener abierta la terminal.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br>
 
-### `npm run build`
+# ¿Cómo probar?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1 - Ejecutar en la terminal el siguiente comando:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`npm run start`
 
-### `npm run eject`
+2 - Esperar que el proyecto abra, por defecto, se abrirá en el navegador por defecto del equipo, en la dirección "localhost:3000"
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3 - Una vez abierta la aplicación puede proceder a probar las funcionalidades que serán explicadas a continuación.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Funcionalidades
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-   La calculadora puede resolver cálculos encadenados
+-   Puede guardar números en la memoria, los cuales se verán en una lista más abajo.
+-   Puede navegar entre esos números con el botón **MR** (Memory Recall).
+-   Puede elegir el número guardado con el botón **CN** (Choose number).
+-   Puede borrar los números de a 1 con el botón **MC** (Memory clear).
 
-## Learn More
+<br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Validaciones
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Para realizar las diferentes validaciones que requiere la calculadora, se utilizaron expresiones regulares.
 
-### Code Splitting
+Cada vez que se encuentre alguna expresión que no pueda resolverse, arrojará "Expresión Incorrecta" en el display.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+También, gracias a las **regexp**, se logró que en la lista solamente puedan guardarse números, no cálculos.
 
-### Analyzing the Bundle Size
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# ¿Qué se implementó de ReactJS y otras librerías?
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   **Hooks** -> useState, useEffect, useContext, useLocalStorage (hook personalizado para manejar el localStorage)
+-   **StyledComponents**, para el estilizado de los componentes, como el display, la botonera, los botones y la calculadora en general.
